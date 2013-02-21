@@ -30,7 +30,18 @@
 <mu>"{{!"[\s\S]*?"}}"            { yytext = yytext.substr(3,yyleng-5); this.popState(); return 'COMMENT'; }
 <mu>"{{"                         { return 'OPEN'; }
 
-<mu>"="                          { return 'EQUALS'; }
+<mu>"typeof"                     { return 'STRING'; }
+<mu>"null"                       { return 'STRING'; }
+<mu>"==="                        { return 'STRING'; }
+<mu>"!=="                        { return 'STRING'; }
+<mu>"&&"                         { return 'STRING'; }
+<mu>"||"                         { return 'STRING'; }
+<mu>" > "                        { yytext = '>'; return 'STRING'; }
+<mu>" < "                        { yytext = '<'; return 'STRING'; }
+<mu>">="                         { return 'STRING'; }
+<mu>"<="                         { return 'STRING'; }
+
+<mu>" = "                 		 { return 'EQUALS'; }
 <mu>"."/[} ]                     { return 'ID'; }
 <mu>".."                         { return 'ID'; }
 <mu>[\/.]                        { return 'SEP'; }
@@ -50,4 +61,3 @@
 <par>[a-zA-Z0-9_$-/]+            { this.popState(); return 'PARTIAL_NAME'; }
 
 <INITIAL,mu><<EOF>>              { return 'EOF'; }
-

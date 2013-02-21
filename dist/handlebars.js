@@ -590,48 +590,68 @@ case 12: yy_.yytext = yy_.yytext.substr(3,yy_.yyleng-5); this.popState(); return
 break;
 case 13: return 22; 
 break;
-case 14: return 36; 
+case 14: return 30; 
 break;
-case 15: return 35; 
+case 15: return 30; 
 break;
-case 16: return 35; 
+case 16: return 30; 
 break;
-case 17: return 39; 
+case 17: return 30; 
 break;
-case 18: /*ignore whitespace*/ 
+case 18: return 30; 
 break;
-case 19: this.popState(); return 18; 
+case 19: return 30; 
 break;
-case 20: this.popState(); return 18; 
+case 20: yy_.yytext = '>'; return 30; 
 break;
-case 21: yy_.yytext = yy_.yytext.substr(1,yy_.yyleng-2).replace(/\\"/g,'"'); return 30; 
+case 21: yy_.yytext = '<'; return 30; 
 break;
-case 22: yy_.yytext = yy_.yytext.substr(1,yy_.yyleng-2).replace(/\\'/g,"'"); return 30; 
+case 22: return 30; 
 break;
-case 23: yy_.yytext = yy_.yytext.substr(1); return 28; 
+case 23: return 30; 
 break;
-case 24: return 32; 
+case 24: return 36; 
 break;
-case 25: return 32; 
+case 25: return 35; 
 break;
-case 26: return 31; 
+case 26: return 35; 
 break;
-case 27: return 35; 
+case 27: return 39; 
 break;
-case 28: yy_.yytext = yy_.yytext.substr(1, yy_.yyleng-2); return 35; 
+case 28: /*ignore whitespace*/ 
 break;
-case 29: return 'INVALID'; 
+case 29: this.popState(); return 18; 
 break;
-case 30: /*ignore whitespace*/ 
+case 30: this.popState(); return 18; 
 break;
-case 31: this.popState(); return 37; 
+case 31: yy_.yytext = yy_.yytext.substr(1,yy_.yyleng-2).replace(/\\"/g,'"'); return 30; 
 break;
-case 32: return 5; 
+case 32: yy_.yytext = yy_.yytext.substr(1,yy_.yyleng-2).replace(/\\'/g,"'"); return 30; 
+break;
+case 33: yy_.yytext = yy_.yytext.substr(1); return 28; 
+break;
+case 34: return 32; 
+break;
+case 35: return 32; 
+break;
+case 36: return 31; 
+break;
+case 37: return 35; 
+break;
+case 38: yy_.yytext = yy_.yytext.substr(1, yy_.yyleng-2); return 35; 
+break;
+case 39: return 'INVALID'; 
+break;
+case 40: /*ignore whitespace*/ 
+break;
+case 41: this.popState(); return 37; 
+break;
+case 42: return 5; 
 break;
 }
 };
-lexer.rules = [/^(?:[^\x00]*?(?=(\{\{)))/,/^(?:[^\x00]+)/,/^(?:[^\x00]{2,}?(?=(\{\{|$)))/,/^(?:[\s\S]*?--\}\})/,/^(?:\{\{>)/,/^(?:\{\{#)/,/^(?:\{\{\/)/,/^(?:\{\{\^)/,/^(?:\{\{\s*else\b)/,/^(?:\{\{\{)/,/^(?:\{\{&)/,/^(?:\{\{!--)/,/^(?:\{\{![\s\S]*?\}\})/,/^(?:\{\{)/,/^(?:=)/,/^(?:\.(?=[} ]))/,/^(?:\.\.)/,/^(?:[\/.])/,/^(?:\s+)/,/^(?:\}\}\})/,/^(?:\}\})/,/^(?:"(\\["]|[^"])*")/,/^(?:'(\\[']|[^'])*')/,/^(?:@[a-zA-Z]+)/,/^(?:true(?=[}\s]))/,/^(?:false(?=[}\s]))/,/^(?:-?[0-9]+(?=[}\s]))/,/^(?:[a-zA-Z0-9_$-]+(?=[=}\s\/.]))/,/^(?:\[[^\]]*\])/,/^(?:.)/,/^(?:\s+)/,/^(?:[a-zA-Z0-9_$-/]+)/,/^(?:$)/];
-lexer.conditions = {"mu":{"rules":[4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,32],"inclusive":false},"emu":{"rules":[2],"inclusive":false},"com":{"rules":[3],"inclusive":false},"par":{"rules":[30,31],"inclusive":false},"INITIAL":{"rules":[0,1,32],"inclusive":true}};
+lexer.rules = [/^(?:[^\x00]*?(?=(\{\{)))/,/^(?:[^\x00]+)/,/^(?:[^\x00]{2,}?(?=(\{\{|$)))/,/^(?:[\s\S]*?--\}\})/,/^(?:\{\{>)/,/^(?:\{\{#)/,/^(?:\{\{\/)/,/^(?:\{\{\^)/,/^(?:\{\{\s*else\b)/,/^(?:\{\{\{)/,/^(?:\{\{&)/,/^(?:\{\{!--)/,/^(?:\{\{![\s\S]*?\}\})/,/^(?:\{\{)/,/^(?:typeof\b)/,/^(?:null\b)/,/^(?:===)/,/^(?:!==)/,/^(?:&&)/,/^(?:\|\|)/,/^(?: > )/,/^(?: < )/,/^(?:>=)/,/^(?:<=)/,/^(?: = )/,/^(?:\.(?=[} ]))/,/^(?:\.\.)/,/^(?:[\/.])/,/^(?:\s+)/,/^(?:\}\}\})/,/^(?:\}\})/,/^(?:"(\\["]|[^"])*")/,/^(?:'(\\[']|[^'])*')/,/^(?:@[a-zA-Z]+)/,/^(?:true(?=[}\s]))/,/^(?:false(?=[}\s]))/,/^(?:-?[0-9]+(?=[}\s]))/,/^(?:[a-zA-Z0-9_$-]+(?=[=}\s\/.]))/,/^(?:\[[^\]]*\])/,/^(?:.)/,/^(?:\s+)/,/^(?:[a-zA-Z0-9_$-/]+)/,/^(?:$)/];
+lexer.conditions = {"mu":{"rules":[4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,42],"inclusive":false},"emu":{"rules":[2],"inclusive":false},"com":{"rules":[3],"inclusive":false},"par":{"rules":[40,41],"inclusive":false},"INITIAL":{"rules":[0,1,42],"inclusive":true}};
 return lexer;})()
 parser.lexer = lexer;
 function Parser () { this.yy = {}; }Parser.prototype = parser;parser.Parser = Parser;
@@ -2110,15 +2130,15 @@ Handlebars.compile = function(input, options) {
 };
 
 ;
-// lib/handlebars/compiler/compilerpatch.js
+// lib/handlebars/compiler/compiler.patch.js
 
 Handlebars.JavaScriptCompiler.prototype.setupHelper =  function(paramSize, name, missingParams) {
     var params = [];
     this.setupParams(paramSize, params, missingParams);
     var foundHelper = this.nameLookup('helpers', name, 'helper');
     if (name === 't') {
-		params[0] = 'gettext(' + params[0] + ')';
-	}
+      params[0] = 'gettext(' + params[0] + ')';
+    }
     return {
       params: params,
       name: foundHelper,
@@ -2126,6 +2146,52 @@ Handlebars.JavaScriptCompiler.prototype.setupHelper =  function(paramSize, name,
       helperMissingParams: missingParams && ["depth0", this.quotedString(name)].concat(params).join(", ")
     };
 };
+
+// [invokeKnownHelper]
+//
+// On stack, before: hash, inverse, program, params..., ...
+// On stack, after: result of helper invocation
+//
+// This operation is used when the helper is known to exist,
+// so a `helperMissing` fallback is not required.
+Handlebars.JavaScriptCompiler.prototype.invokeKnownHelper = function(paramSize, name) {
+    var helper = this.setupHelper(paramSize, name);
+    if (name === 'if' || name === 'unless') {
+      // Note: "if !condition" is not supported
+      var ops = ['&&', '\\|\\|', '==', '===', '!=', '!==', '>', '<', '>=', '<=', 'typeof', 'null'],
+          opsRe = [],
+          re = new RegExp('[\'"]+', 'g'),
+          params = helper.params,
+          options = params[params.length - 1],
+          i, len, j, jlen;
+      // remove options from parameters
+      params.splice(params.length - 1, 1);
+      // create array of operators regex
+      for (i = 0, len = ops.length; i < len; i++) {
+        opsRe.push(new RegExp('^[\'"]+' + ops[i] + '[\'"]+$'));
+      }
+      //opsRe.push(new RegExp('^[\'"]+\\|\\|[\'"]+$'));
+      // test each parameter against every operator regex
+      for (i = 0, len = params.length; i < len; i++) {
+        var param = params[i];
+        for ( j = 0, jlen = opsRe.length; j < jlen; j++) {
+          // operator or keyword is found
+          if (opsRe[j].test(param)) {
+            // remove wrapping quotes from the operand
+            params[i] = param.replace(re, '');
+            if(params[i] === ''){
+              params[i] = '""';
+            }
+            break;
+          }
+        }
+      }
+      // create parameters string
+      helper.callParams = "depth0, (" + params.join(" ") + "), " + options;
+      if(name === 'if') console.log(helper.callParams);
+    }
+    this.push(helper.name + ".call(" + helper.callParams + ")");
+  };
 ;
 // lib/handlebars/runtime.js
 
