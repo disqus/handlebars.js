@@ -46,7 +46,6 @@ mustache
   | OPEN_UNESCAPED inMustache CLOSE { $$ = new yy.MustacheNode($2[0], $2[1], true); }
   ;
 
-
 partial
   : OPEN_PARTIAL partialName CLOSE { $$ = new yy.PartialNode($2); }
   | OPEN_PARTIAL partialName path CLOSE { $$ = new yy.PartialNode($2, $3); }
@@ -89,6 +88,7 @@ hashSegments
 hashSegment
   : ID EQUALS path { $$ = [$1, $3]; }
   | ID EQUALS STRING { $$ = [$1, new yy.StringNode($3)]; }
+  | ID EQUALS PARTIAL_NAME WRAP path WRAP { $$ = [$1, new yy.StringNode($3), $5]; }
   | ID EQUALS INTEGER { $$ = [$1, new yy.IntegerNode($3)]; }
   | ID EQUALS BOOLEAN { $$ = [$1, new yy.BooleanNode($3)]; }
   | ID EQUALS DATA { $$ = [$1, new yy.DataNode($3)]; }

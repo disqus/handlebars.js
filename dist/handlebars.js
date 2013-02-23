@@ -169,9 +169,9 @@ Handlebars.registerHelper('log', function(context, options) {
 var handlebars = (function(){
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"root":3,"program":4,"EOF":5,"simpleInverse":6,"statements":7,"statement":8,"openInverse":9,"closeBlock":10,"openBlock":11,"mustache":12,"partial":13,"CONTENT":14,"COMMENT":15,"OPEN_BLOCK":16,"inMustache":17,"CLOSE":18,"OPEN_INVERSE":19,"OPEN_ENDBLOCK":20,"path":21,"OPEN":22,"OPEN_UNESCAPED":23,"OPEN_PARTIAL":24,"partialName":25,"params":26,"hash":27,"DATA":28,"param":29,"STRING":30,"INTEGER":31,"BOOLEAN":32,"hashSegments":33,"hashSegment":34,"ID":35,"EQUALS":36,"PARTIAL_NAME":37,"pathSegments":38,"SEP":39,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",14:"CONTENT",15:"COMMENT",16:"OPEN_BLOCK",18:"CLOSE",19:"OPEN_INVERSE",20:"OPEN_ENDBLOCK",22:"OPEN",23:"OPEN_UNESCAPED",24:"OPEN_PARTIAL",28:"DATA",30:"STRING",31:"INTEGER",32:"BOOLEAN",35:"ID",36:"EQUALS",37:"PARTIAL_NAME",39:"SEP"},
-productions_: [0,[3,2],[4,2],[4,3],[4,2],[4,1],[4,1],[4,0],[7,1],[7,2],[8,3],[8,3],[8,1],[8,1],[8,1],[8,1],[11,3],[9,3],[10,3],[12,3],[12,3],[13,3],[13,4],[6,2],[17,3],[17,2],[17,2],[17,1],[17,1],[26,2],[26,1],[29,1],[29,1],[29,1],[29,1],[29,1],[27,1],[33,2],[33,1],[34,3],[34,3],[34,3],[34,3],[34,3],[25,1],[21,1],[38,3],[38,1]],
+symbols_: {"error":2,"root":3,"program":4,"EOF":5,"simpleInverse":6,"statements":7,"statement":8,"openInverse":9,"closeBlock":10,"openBlock":11,"mustache":12,"partial":13,"CONTENT":14,"COMMENT":15,"OPEN_BLOCK":16,"inMustache":17,"CLOSE":18,"OPEN_INVERSE":19,"OPEN_ENDBLOCK":20,"path":21,"OPEN":22,"OPEN_UNESCAPED":23,"OPEN_PARTIAL":24,"partialName":25,"params":26,"hash":27,"DATA":28,"param":29,"STRING":30,"INTEGER":31,"BOOLEAN":32,"hashSegments":33,"hashSegment":34,"ID":35,"EQUALS":36,"PARTIAL_NAME":37,"WRAP":38,"pathSegments":39,"SEP":40,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",14:"CONTENT",15:"COMMENT",16:"OPEN_BLOCK",18:"CLOSE",19:"OPEN_INVERSE",20:"OPEN_ENDBLOCK",22:"OPEN",23:"OPEN_UNESCAPED",24:"OPEN_PARTIAL",28:"DATA",30:"STRING",31:"INTEGER",32:"BOOLEAN",35:"ID",36:"EQUALS",37:"PARTIAL_NAME",38:"WRAP",40:"SEP"},
+productions_: [0,[3,2],[4,2],[4,3],[4,2],[4,1],[4,1],[4,0],[7,1],[7,2],[8,3],[8,3],[8,1],[8,1],[8,1],[8,1],[11,3],[9,3],[10,3],[12,3],[12,3],[13,3],[13,4],[6,2],[17,3],[17,2],[17,2],[17,1],[17,1],[26,2],[26,1],[29,1],[29,1],[29,1],[29,1],[29,1],[27,1],[33,2],[33,1],[34,3],[34,3],[34,6],[34,3],[34,3],[34,3],[25,1],[21,1],[39,3],[39,1]],
 performAction: function anonymous(yytext,yyleng,yylineno,yy,yystate,$$,_$) {
 
 var $0 = $$.length - 1;
@@ -256,23 +256,25 @@ case 39: this.$ = [$$[$0-2], $$[$0]];
 break;
 case 40: this.$ = [$$[$0-2], new yy.StringNode($$[$0])]; 
 break;
-case 41: this.$ = [$$[$0-2], new yy.IntegerNode($$[$0])]; 
+case 41: this.$ = [$$[$0-5], new yy.StringNode($$[$0-3]), $$[$0-1]]; 
 break;
-case 42: this.$ = [$$[$0-2], new yy.BooleanNode($$[$0])]; 
+case 42: this.$ = [$$[$0-2], new yy.IntegerNode($$[$0])]; 
 break;
-case 43: this.$ = [$$[$0-2], new yy.DataNode($$[$0])]; 
+case 43: this.$ = [$$[$0-2], new yy.BooleanNode($$[$0])]; 
 break;
-case 44: this.$ = new yy.PartialNameNode($$[$0]); 
+case 44: this.$ = [$$[$0-2], new yy.DataNode($$[$0])]; 
 break;
-case 45: this.$ = new yy.IdNode($$[$0]); 
+case 45: this.$ = new yy.PartialNameNode($$[$0]); 
 break;
-case 46: $$[$0-2].push($$[$0]); this.$ = $$[$0-2]; 
+case 46: this.$ = new yy.IdNode($$[$0]); 
 break;
-case 47: this.$ = [$$[$0]]; 
+case 47: $$[$0-2].push($$[$0]); this.$ = $$[$0-2]; 
+break;
+case 48: this.$ = [$$[$0]]; 
 break;
 }
 },
-table: [{3:1,4:2,5:[2,7],6:3,7:4,8:6,9:7,11:8,12:9,13:10,14:[1,11],15:[1,12],16:[1,13],19:[1,5],22:[1,14],23:[1,15],24:[1,16]},{1:[3]},{5:[1,17]},{5:[2,6],7:18,8:6,9:7,11:8,12:9,13:10,14:[1,11],15:[1,12],16:[1,13],19:[1,19],20:[2,6],22:[1,14],23:[1,15],24:[1,16]},{5:[2,5],6:20,8:21,9:7,11:8,12:9,13:10,14:[1,11],15:[1,12],16:[1,13],19:[1,5],20:[2,5],22:[1,14],23:[1,15],24:[1,16]},{17:23,18:[1,22],21:24,28:[1,25],35:[1,27],38:26},{5:[2,8],14:[2,8],15:[2,8],16:[2,8],19:[2,8],20:[2,8],22:[2,8],23:[2,8],24:[2,8]},{4:28,6:3,7:4,8:6,9:7,11:8,12:9,13:10,14:[1,11],15:[1,12],16:[1,13],19:[1,5],20:[2,7],22:[1,14],23:[1,15],24:[1,16]},{4:29,6:3,7:4,8:6,9:7,11:8,12:9,13:10,14:[1,11],15:[1,12],16:[1,13],19:[1,5],20:[2,7],22:[1,14],23:[1,15],24:[1,16]},{5:[2,12],14:[2,12],15:[2,12],16:[2,12],19:[2,12],20:[2,12],22:[2,12],23:[2,12],24:[2,12]},{5:[2,13],14:[2,13],15:[2,13],16:[2,13],19:[2,13],20:[2,13],22:[2,13],23:[2,13],24:[2,13]},{5:[2,14],14:[2,14],15:[2,14],16:[2,14],19:[2,14],20:[2,14],22:[2,14],23:[2,14],24:[2,14]},{5:[2,15],14:[2,15],15:[2,15],16:[2,15],19:[2,15],20:[2,15],22:[2,15],23:[2,15],24:[2,15]},{17:30,21:24,28:[1,25],35:[1,27],38:26},{17:31,21:24,28:[1,25],35:[1,27],38:26},{17:32,21:24,28:[1,25],35:[1,27],38:26},{25:33,37:[1,34]},{1:[2,1]},{5:[2,2],8:21,9:7,11:8,12:9,13:10,14:[1,11],15:[1,12],16:[1,13],19:[1,19],20:[2,2],22:[1,14],23:[1,15],24:[1,16]},{17:23,21:24,28:[1,25],35:[1,27],38:26},{5:[2,4],7:35,8:6,9:7,11:8,12:9,13:10,14:[1,11],15:[1,12],16:[1,13],19:[1,19],20:[2,4],22:[1,14],23:[1,15],24:[1,16]},{5:[2,9],14:[2,9],15:[2,9],16:[2,9],19:[2,9],20:[2,9],22:[2,9],23:[2,9],24:[2,9]},{5:[2,23],14:[2,23],15:[2,23],16:[2,23],19:[2,23],20:[2,23],22:[2,23],23:[2,23],24:[2,23]},{18:[1,36]},{18:[2,27],21:41,26:37,27:38,28:[1,45],29:39,30:[1,42],31:[1,43],32:[1,44],33:40,34:46,35:[1,47],38:26},{18:[2,28]},{18:[2,45],28:[2,45],30:[2,45],31:[2,45],32:[2,45],35:[2,45],39:[1,48]},{18:[2,47],28:[2,47],30:[2,47],31:[2,47],32:[2,47],35:[2,47],39:[2,47]},{10:49,20:[1,50]},{10:51,20:[1,50]},{18:[1,52]},{18:[1,53]},{18:[1,54]},{18:[1,55],21:56,35:[1,27],38:26},{18:[2,44],35:[2,44]},{5:[2,3],8:21,9:7,11:8,12:9,13:10,14:[1,11],15:[1,12],16:[1,13],19:[1,19],20:[2,3],22:[1,14],23:[1,15],24:[1,16]},{14:[2,17],15:[2,17],16:[2,17],19:[2,17],20:[2,17],22:[2,17],23:[2,17],24:[2,17]},{18:[2,25],21:41,27:57,28:[1,45],29:58,30:[1,42],31:[1,43],32:[1,44],33:40,34:46,35:[1,47],38:26},{18:[2,26]},{18:[2,30],28:[2,30],30:[2,30],31:[2,30],32:[2,30],35:[2,30]},{18:[2,36],34:59,35:[1,60]},{18:[2,31],28:[2,31],30:[2,31],31:[2,31],32:[2,31],35:[2,31]},{18:[2,32],28:[2,32],30:[2,32],31:[2,32],32:[2,32],35:[2,32]},{18:[2,33],28:[2,33],30:[2,33],31:[2,33],32:[2,33],35:[2,33]},{18:[2,34],28:[2,34],30:[2,34],31:[2,34],32:[2,34],35:[2,34]},{18:[2,35],28:[2,35],30:[2,35],31:[2,35],32:[2,35],35:[2,35]},{18:[2,38],35:[2,38]},{18:[2,47],28:[2,47],30:[2,47],31:[2,47],32:[2,47],35:[2,47],36:[1,61],39:[2,47]},{35:[1,62]},{5:[2,10],14:[2,10],15:[2,10],16:[2,10],19:[2,10],20:[2,10],22:[2,10],23:[2,10],24:[2,10]},{21:63,35:[1,27],38:26},{5:[2,11],14:[2,11],15:[2,11],16:[2,11],19:[2,11],20:[2,11],22:[2,11],23:[2,11],24:[2,11]},{14:[2,16],15:[2,16],16:[2,16],19:[2,16],20:[2,16],22:[2,16],23:[2,16],24:[2,16]},{5:[2,19],14:[2,19],15:[2,19],16:[2,19],19:[2,19],20:[2,19],22:[2,19],23:[2,19],24:[2,19]},{5:[2,20],14:[2,20],15:[2,20],16:[2,20],19:[2,20],20:[2,20],22:[2,20],23:[2,20],24:[2,20]},{5:[2,21],14:[2,21],15:[2,21],16:[2,21],19:[2,21],20:[2,21],22:[2,21],23:[2,21],24:[2,21]},{18:[1,64]},{18:[2,24]},{18:[2,29],28:[2,29],30:[2,29],31:[2,29],32:[2,29],35:[2,29]},{18:[2,37],35:[2,37]},{36:[1,61]},{21:65,28:[1,69],30:[1,66],31:[1,67],32:[1,68],35:[1,27],38:26},{18:[2,46],28:[2,46],30:[2,46],31:[2,46],32:[2,46],35:[2,46],39:[2,46]},{18:[1,70]},{5:[2,22],14:[2,22],15:[2,22],16:[2,22],19:[2,22],20:[2,22],22:[2,22],23:[2,22],24:[2,22]},{18:[2,39],35:[2,39]},{18:[2,40],35:[2,40]},{18:[2,41],35:[2,41]},{18:[2,42],35:[2,42]},{18:[2,43],35:[2,43]},{5:[2,18],14:[2,18],15:[2,18],16:[2,18],19:[2,18],20:[2,18],22:[2,18],23:[2,18],24:[2,18]}],
+table: [{3:1,4:2,5:[2,7],6:3,7:4,8:6,9:7,11:8,12:9,13:10,14:[1,11],15:[1,12],16:[1,13],19:[1,5],22:[1,14],23:[1,15],24:[1,16]},{1:[3]},{5:[1,17]},{5:[2,6],7:18,8:6,9:7,11:8,12:9,13:10,14:[1,11],15:[1,12],16:[1,13],19:[1,19],20:[2,6],22:[1,14],23:[1,15],24:[1,16]},{5:[2,5],6:20,8:21,9:7,11:8,12:9,13:10,14:[1,11],15:[1,12],16:[1,13],19:[1,5],20:[2,5],22:[1,14],23:[1,15],24:[1,16]},{17:23,18:[1,22],21:24,28:[1,25],35:[1,27],39:26},{5:[2,8],14:[2,8],15:[2,8],16:[2,8],19:[2,8],20:[2,8],22:[2,8],23:[2,8],24:[2,8]},{4:28,6:3,7:4,8:6,9:7,11:8,12:9,13:10,14:[1,11],15:[1,12],16:[1,13],19:[1,5],20:[2,7],22:[1,14],23:[1,15],24:[1,16]},{4:29,6:3,7:4,8:6,9:7,11:8,12:9,13:10,14:[1,11],15:[1,12],16:[1,13],19:[1,5],20:[2,7],22:[1,14],23:[1,15],24:[1,16]},{5:[2,12],14:[2,12],15:[2,12],16:[2,12],19:[2,12],20:[2,12],22:[2,12],23:[2,12],24:[2,12]},{5:[2,13],14:[2,13],15:[2,13],16:[2,13],19:[2,13],20:[2,13],22:[2,13],23:[2,13],24:[2,13]},{5:[2,14],14:[2,14],15:[2,14],16:[2,14],19:[2,14],20:[2,14],22:[2,14],23:[2,14],24:[2,14]},{5:[2,15],14:[2,15],15:[2,15],16:[2,15],19:[2,15],20:[2,15],22:[2,15],23:[2,15],24:[2,15]},{17:30,21:24,28:[1,25],35:[1,27],39:26},{17:31,21:24,28:[1,25],35:[1,27],39:26},{17:32,21:24,28:[1,25],35:[1,27],39:26},{25:33,37:[1,34]},{1:[2,1]},{5:[2,2],8:21,9:7,11:8,12:9,13:10,14:[1,11],15:[1,12],16:[1,13],19:[1,19],20:[2,2],22:[1,14],23:[1,15],24:[1,16]},{17:23,21:24,28:[1,25],35:[1,27],39:26},{5:[2,4],7:35,8:6,9:7,11:8,12:9,13:10,14:[1,11],15:[1,12],16:[1,13],19:[1,19],20:[2,4],22:[1,14],23:[1,15],24:[1,16]},{5:[2,9],14:[2,9],15:[2,9],16:[2,9],19:[2,9],20:[2,9],22:[2,9],23:[2,9],24:[2,9]},{5:[2,23],14:[2,23],15:[2,23],16:[2,23],19:[2,23],20:[2,23],22:[2,23],23:[2,23],24:[2,23]},{18:[1,36]},{18:[2,27],21:41,26:37,27:38,28:[1,45],29:39,30:[1,42],31:[1,43],32:[1,44],33:40,34:46,35:[1,47],39:26},{18:[2,28]},{18:[2,46],28:[2,46],30:[2,46],31:[2,46],32:[2,46],35:[2,46],38:[2,46],40:[1,48]},{18:[2,48],28:[2,48],30:[2,48],31:[2,48],32:[2,48],35:[2,48],38:[2,48],40:[2,48]},{10:49,20:[1,50]},{10:51,20:[1,50]},{18:[1,52]},{18:[1,53]},{18:[1,54]},{18:[1,55],21:56,35:[1,27],39:26},{18:[2,45],35:[2,45]},{5:[2,3],8:21,9:7,11:8,12:9,13:10,14:[1,11],15:[1,12],16:[1,13],19:[1,19],20:[2,3],22:[1,14],23:[1,15],24:[1,16]},{14:[2,17],15:[2,17],16:[2,17],19:[2,17],20:[2,17],22:[2,17],23:[2,17],24:[2,17]},{18:[2,25],21:41,27:57,28:[1,45],29:58,30:[1,42],31:[1,43],32:[1,44],33:40,34:46,35:[1,47],39:26},{18:[2,26]},{18:[2,30],28:[2,30],30:[2,30],31:[2,30],32:[2,30],35:[2,30]},{18:[2,36],34:59,35:[1,60]},{18:[2,31],28:[2,31],30:[2,31],31:[2,31],32:[2,31],35:[2,31]},{18:[2,32],28:[2,32],30:[2,32],31:[2,32],32:[2,32],35:[2,32]},{18:[2,33],28:[2,33],30:[2,33],31:[2,33],32:[2,33],35:[2,33]},{18:[2,34],28:[2,34],30:[2,34],31:[2,34],32:[2,34],35:[2,34]},{18:[2,35],28:[2,35],30:[2,35],31:[2,35],32:[2,35],35:[2,35]},{18:[2,38],35:[2,38]},{18:[2,48],28:[2,48],30:[2,48],31:[2,48],32:[2,48],35:[2,48],36:[1,61],40:[2,48]},{35:[1,62]},{5:[2,10],14:[2,10],15:[2,10],16:[2,10],19:[2,10],20:[2,10],22:[2,10],23:[2,10],24:[2,10]},{21:63,35:[1,27],39:26},{5:[2,11],14:[2,11],15:[2,11],16:[2,11],19:[2,11],20:[2,11],22:[2,11],23:[2,11],24:[2,11]},{14:[2,16],15:[2,16],16:[2,16],19:[2,16],20:[2,16],22:[2,16],23:[2,16],24:[2,16]},{5:[2,19],14:[2,19],15:[2,19],16:[2,19],19:[2,19],20:[2,19],22:[2,19],23:[2,19],24:[2,19]},{5:[2,20],14:[2,20],15:[2,20],16:[2,20],19:[2,20],20:[2,20],22:[2,20],23:[2,20],24:[2,20]},{5:[2,21],14:[2,21],15:[2,21],16:[2,21],19:[2,21],20:[2,21],22:[2,21],23:[2,21],24:[2,21]},{18:[1,64]},{18:[2,24]},{18:[2,29],28:[2,29],30:[2,29],31:[2,29],32:[2,29],35:[2,29]},{18:[2,37],35:[2,37]},{36:[1,61]},{21:65,28:[1,70],30:[1,66],31:[1,68],32:[1,69],35:[1,27],37:[1,67],39:26},{18:[2,47],28:[2,47],30:[2,47],31:[2,47],32:[2,47],35:[2,47],38:[2,47],40:[2,47]},{18:[1,71]},{5:[2,22],14:[2,22],15:[2,22],16:[2,22],19:[2,22],20:[2,22],22:[2,22],23:[2,22],24:[2,22]},{18:[2,39],35:[2,39]},{18:[2,40],35:[2,40]},{38:[1,72]},{18:[2,42],35:[2,42]},{18:[2,43],35:[2,43]},{18:[2,44],35:[2,44]},{5:[2,18],14:[2,18],15:[2,18],16:[2,18],19:[2,18],20:[2,18],22:[2,18],23:[2,18],24:[2,18]},{21:73,35:[1,27],39:26},{38:[1,74]},{18:[2,41],35:[2,41]}],
 defaultActions: {17:[2,1],25:[2,28],38:[2,26],57:[2,24]},
 parseError: function parseError(str, hash) {
     throw new Error(str);
@@ -610,48 +612,52 @@ case 22: return 30;
 break;
 case 23: return 30; 
 break;
-case 24: return 36; 
+case 24: return 37; 
 break;
-case 25: return 35; 
+case 25: return 38; 
 break;
-case 26: return 35; 
+case 26: return 36; 
 break;
-case 27: return 39; 
+case 27: return 35; 
 break;
-case 28: /*ignore whitespace*/ 
+case 28: return 35; 
 break;
-case 29: this.popState(); return 18; 
+case 29: return 40; 
 break;
-case 30: this.popState(); return 18; 
+case 30: /*ignore whitespace*/ 
 break;
-case 31: yy_.yytext = yy_.yytext.substr(1,yy_.yyleng-2).replace(/\\"/g,'"'); return 30; 
+case 31: this.popState(); return 18; 
 break;
-case 32: yy_.yytext = yy_.yytext.substr(1,yy_.yyleng-2).replace(/\\'/g,"'"); return 30; 
+case 32: this.popState(); return 18; 
 break;
-case 33: yy_.yytext = yy_.yytext.substr(1); return 28; 
+case 33: yy_.yytext = yy_.yytext.substr(1,yy_.yyleng-2).replace(/\\"/g,'"'); return 30; 
 break;
-case 34: return 32; 
+case 34: yy_.yytext = yy_.yytext.substr(1,yy_.yyleng-2).replace(/\\'/g,"'"); return 30; 
 break;
-case 35: return 32; 
+case 35: yy_.yytext = yy_.yytext.substr(1); return 28; 
 break;
-case 36: return 31; 
+case 36: return 32; 
 break;
-case 37: return 35; 
+case 37: return 32; 
 break;
-case 38: yy_.yytext = yy_.yytext.substr(1, yy_.yyleng-2); return 35; 
+case 38: return 31; 
 break;
-case 39: return 'INVALID'; 
+case 39: return 35; 
 break;
-case 40: /*ignore whitespace*/ 
+case 40: yy_.yytext = yy_.yytext.substr(1, yy_.yyleng-2); return 35; 
 break;
-case 41: this.popState(); return 37; 
+case 41: return 'INVALID'; 
 break;
-case 42: return 5; 
+case 42: /*ignore whitespace*/ 
+break;
+case 43: this.popState(); return 37; 
+break;
+case 44: return 5; 
 break;
 }
 };
-lexer.rules = [/^(?:[^\x00]*?(?=(\{\{)))/,/^(?:[^\x00]+)/,/^(?:[^\x00]{2,}?(?=(\{\{|$)))/,/^(?:[\s\S]*?--\}\})/,/^(?:\{\{>)/,/^(?:\{\{#)/,/^(?:\{\{\/)/,/^(?:\{\{\^)/,/^(?:\{\{\s*else\b)/,/^(?:\{\{\{)/,/^(?:\{\{&)/,/^(?:\{\{!--)/,/^(?:\{\{![\s\S]*?\}\})/,/^(?:\{\{)/,/^(?:typeof\b)/,/^(?:null\b)/,/^(?:===)/,/^(?:!==)/,/^(?:&&)/,/^(?:\|\|)/,/^(?: > )/,/^(?: < )/,/^(?:>=)/,/^(?:<=)/,/^(?: = )/,/^(?:\.(?=[} ]))/,/^(?:\.\.)/,/^(?:[\/.])/,/^(?:\s+)/,/^(?:\}\}\})/,/^(?:\}\})/,/^(?:"(\\["]|[^"])*")/,/^(?:'(\\[']|[^'])*')/,/^(?:@[a-zA-Z]+)/,/^(?:true(?=[}\s]))/,/^(?:false(?=[}\s]))/,/^(?:-?[0-9]+(?=[}\s]))/,/^(?:[a-zA-Z0-9_$-]+(?=[=}\s\/.]))/,/^(?:\[[^\]]*\])/,/^(?:.)/,/^(?:\s+)/,/^(?:[a-zA-Z0-9_$-/]+)/,/^(?:$)/];
-lexer.conditions = {"mu":{"rules":[4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,42],"inclusive":false},"emu":{"rules":[2],"inclusive":false},"com":{"rules":[3],"inclusive":false},"par":{"rules":[40,41],"inclusive":false},"INITIAL":{"rules":[0,1,42],"inclusive":true}};
+lexer.rules = [/^(?:[^\x00]*?(?=(\{\{)))/,/^(?:[^\x00]+)/,/^(?:[^\x00]{2,}?(?=(\{\{|$)))/,/^(?:[\s\S]*?--\}\})/,/^(?:\{\{>)/,/^(?:\{\{#)/,/^(?:\{\{\/)/,/^(?:\{\{\^)/,/^(?:\{\{\s*else\b)/,/^(?:\{\{\{)/,/^(?:\{\{&)/,/^(?:\{\{!--)/,/^(?:\{\{![\s\S]*?\}\})/,/^(?:\{\{)/,/^(?:typeof\b)/,/^(?:null\b)/,/^(?:===)/,/^(?:!==)/,/^(?:&&)/,/^(?:\|\|)/,/^(?: > )/,/^(?: < )/,/^(?:>=)/,/^(?:<=)/,/^(?:[a-zA-Z0-9_-]+(?=[\(]))/,/^(?:[\(\)])/,/^(?: = )/,/^(?:\.(?=[} ]))/,/^(?:\.\.)/,/^(?:[\/.])/,/^(?:\s+)/,/^(?:\}\}\})/,/^(?:\}\})/,/^(?:"(\\["]|[^"])*")/,/^(?:'(\\[']|[^'])*')/,/^(?:@[a-zA-Z]+)/,/^(?:true(?=[}\s]))/,/^(?:false(?=[}\s]))/,/^(?:-?[0-9]+(?=[}\s]))/,/^(?:[a-zA-Z0-9_-]+(?=[=\)}\s\/.]))/,/^(?:\[[^\]]*\])/,/^(?:.)/,/^(?:\s+)/,/^(?:[a-zA-Z0-9_$-/]+)/,/^(?:$)/];
+lexer.conditions = {"mu":{"rules":[4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,44],"inclusive":false},"emu":{"rules":[2],"inclusive":false},"com":{"rules":[3],"inclusive":false},"par":{"rules":[42,43],"inclusive":false},"INITIAL":{"rules":[0,1,44],"inclusive":true}};
 return lexer;})()
 parser.lexer = lexer;
 function Parser () { this.yy = {}; }Parser.prototype = parser;parser.Parser = Parser;
@@ -2131,68 +2137,124 @@ Handlebars.compile = function(input, options) {
 
 ;
 // lib/handlebars/compiler/compiler.patch.js
+// This file contains overrides to original Handlebars compiler.
+exports.attach = function(Handlebars) {
 
-Handlebars.JavaScriptCompiler.prototype.setupHelper =  function(paramSize, name, missingParams) {
-    var params = [];
-    this.setupParams(paramSize, params, missingParams);
-    var foundHelper = this.nameLookup('helpers', name, 'helper');
-    if (name === 't') {
-      params[0] = 'gettext(' + params[0] + ')';
-    }
-    return {
-      params: params,
-      name: foundHelper,
-      callParams: ["depth0"].concat(params).join(", "),
-      helperMissingParams: missingParams && ["depth0", this.quotedString(name)].concat(params).join(", ")
-    };
-};
+    // BEGIN(BROWSER)
 
-// [invokeKnownHelper]
-//
-// On stack, before: hash, inverse, program, params..., ...
-// On stack, after: result of helper invocation
-//
-// This operation is used when the helper is known to exist,
-// so a `helperMissing` fallback is not required.
-Handlebars.JavaScriptCompiler.prototype.invokeKnownHelper = function(paramSize, name) {
-    var helper = this.setupHelper(paramSize, name);
-    if (name === 'if' || name === 'unless') {
-      // Note: "if !condition" is not supported
-      var ops = ['&&', '\\|\\|', '==', '===', '!=', '!==', '>', '<', '>=', '<=', 'typeof', 'null'],
-          opsRe = [],
-          re = new RegExp('[\'"]+', 'g'),
-          params = helper.params,
-          options = params[params.length - 1],
-          i, len, j, jlen;
-      // remove options from parameters
-      params.splice(params.length - 1, 1);
-      // create array of operators regex
-      for (i = 0, len = ops.length; i < len; i++) {
-        opsRe.push(new RegExp('^[\'"]+' + ops[i] + '[\'"]+$'));
-      }
-      //opsRe.push(new RegExp('^[\'"]+\\|\\|[\'"]+$'));
-      // test each parameter against every operator regex
-      for (i = 0, len = params.length; i < len; i++) {
-        var param = params[i];
-        for ( j = 0, jlen = opsRe.length; j < jlen; j++) {
-          // operator or keyword is found
-          if (opsRe[j].test(param)) {
-            // remove wrapping quotes from the operand
-            params[i] = param.replace(re, '');
-            if(params[i] === ''){
-              params[i] = '""';
-            }
-            break;
-          }
+    Handlebars.JavaScriptCompiler.prototype.setupHelper =  function (paramSize, name, missingParams) {
+        var params = [];
+        this.setupParams(paramSize, params, missingParams);
+        var foundHelper = this.nameLookup('helpers', name, 'helper');
+        if (name === 't') {
+            params[0] = 'gettext(' + params[0] + ')';
         }
-      }
-      // create parameters string
-      helper.callParams = "depth0, (" + params.join(" ") + "), " + options;
-      if(name === 'if') console.log(helper.callParams);
-    }
-    this.push(helper.name + ".call(" + helper.callParams + ")");
-  };
-;
+        return {
+            params: params,
+            name: foundHelper,
+            callParams: ["depth0"].concat(params).join(", "),
+            helperMissingParams: missingParams && ["depth0", this.quotedString(name)].concat(params).join(", ")
+        };
+    };
+
+    // [invokeKnownHelper]
+    //
+    // On stack, before: hash, inverse, program, params..., ...
+    // On stack, after: result of helper invocation
+    //
+    // This operation is used when the helper is known to exist,
+    // so a `helperMissing` fallback is not required.
+    Handlebars.JavaScriptCompiler.prototype.invokeKnownHelper = function (paramSize, name) {
+        var helper = this.setupHelper(paramSize, name);
+        if (name === 'if' || name === 'unless') {
+            // Note: "if !condition" is not supported
+            var ops = ['&&', '\\|\\|', '==', '===', '!=', '!==', '>', '<', '>=', '<=', 'typeof', 'null'],
+                    opsRe = [],
+                    re = new RegExp('[\'"]+', 'g'),
+                    params = helper.params,
+                    options = params[params.length - 1],
+                    i, len, j, jlen;
+            // remove options from parameters
+            params.splice(params.length - 1, 1);
+            // create array of operators regex
+            for (i = 0, len = ops.length; i < len; i++) {
+                opsRe.push(new RegExp('^[\'"]+' + ops[i] + '[\'"]+$'));
+            }
+            // test each parameter against every operator regex
+            for (i = 0, len = params.length; i < len; i++) {
+                var param = params[i];
+                for (j = 0, jlen = opsRe.length; j < jlen; j++) {
+                    // operator or keyword is found
+                    if (opsRe[j].test(param)) {
+                        // remove wrapping quotes from the operand
+                        params[i] = param.replace(re, '');
+                        if (params[i] === '') {
+                            params[i] = '""';
+                        }
+                        break;
+                    }
+                }
+            }
+            // create parameters string
+            helper.callParams = "depth0, (" + params.join(" ") + "), " + options;
+        }
+        this.push(helper.name + ".call(" + helper.callParams + ")");
+    };
+
+    Handlebars.Compiler.prototype.hash = function (hash) {
+        var pairs = hash.pairs,
+            pair, val, id;
+        this.opcode('pushHash');
+        for(var i=0, l=pairs.length; i<l; i++) {
+            pair = pairs[i];
+            val  = pair[1];
+            id   = pair.length > 2 ? pair[2] : false;
+            if (this.options.stringParams && !id) {
+                this.opcode('pushStringParam', val.stringModeValue, val.type);
+            } else {
+                this.accept(val);
+                if (id) {
+                    this.accept(id);
+                }
+            }
+            this.opcode('assignToHash', pair[0], !!id);
+        }
+        this.opcode('popHash');
+    };
+
+    // [assignToHash]
+    //
+    // On stack, before: value, hash, ...
+    // On stack, after: hash, ...
+    //
+    // Pops a value and hash off the stack, assigns `hash[key] = value`
+    // and pushes the hash back onto the stack.
+    Handlebars.JavaScriptCompiler.prototype.assignToHash = function(key, hasId) {
+        var value = this.popStack(),
+            partialName, type;
+
+        if (this.options.stringParams) {
+            type = this.popStack();
+            this.popStack();
+        }
+
+        var hash = this.hash;
+        if (type) {
+            hash.types.push("'" + key + "': " + type);
+        }
+        if (!hasId) {
+            hash.values.push("'" + key + "': (" + value + ")");
+        } else {
+            partialName = this.popStack();
+            hash.values.push("'" + key + "': { partial:(" + partialName + "), context:(" + value + "), executePartial: true}");
+        }
+    };
+
+    // END(BROWSER)
+
+    return Handlebars;
+
+};;
 // lib/handlebars/runtime.js
 
 Handlebars.VM = {
