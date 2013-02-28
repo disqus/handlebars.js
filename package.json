@@ -1,6 +1,6 @@
 {
-  "name": "handlebars",
-  "description": "Extension of the Mustache logicless template language",
+  "name": "disqus-handlebars",
+  "description": "Extension of Handlebars logicless template engine.",
   "version": "1.0.9",
   "homepage": "http://www.handlebarsjs.com/",
   "keywords": [
@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/wycats/handlebars.js.git"
+    "url": "git://github.com/disqus/handlebars.js.git"
   },
   "engines": {
     "node": ">=0.4.7"
