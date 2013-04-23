@@ -7,6 +7,9 @@ Handlebars.js is an extension to the [Mustache templating language](http://musta
 
 Checkout the official Handlebars docs site at [http://www.handlebarsjs.com](http://www.handlebarsjs.com).
 
+Disqus
+----------
+In Disqus we use Handlebars.js as a main templating language. But we had to extend it a little bit for our own needs. Please see section Differences between Handlebars.js and Disqus-Handlebars below.
 
 Installing
 ----------
@@ -71,6 +74,111 @@ data passed from the server as JSON.
 
 To explicitly *not* escape the contents, use the triple-mustache
 (`{{{}}}`). You have seen this used in the above example.
+
+
+Differences between Handlebars.js and Disqus-Handlebars
+-------------------------------------------------------
+Although Handlebars.js philosophy is all about logic-less templates, we need some additional functionality in the template language. This allowed us to migrate from our home-grown template language (named DTPL) more easily.
+
+### if statements
+You can write complex if statements similar to how you do this in plain javascript:
+```js
+{{#if post.isDeleted || post.isMinimized}} minimized {{/if}}
+```
+or
+```js
+{{#if post.author.id && post.author.id !== "0"}}
+```
+
+Please note that operators like `&&` and `!==` are separated by spaces. This is a requirement in current version of Disqus-Handlebars. Also you're not allowed to use parenthesis and build very complex if statements.
+It is recommended to use identity `===` over equality `==` operator in your templates.
+
+
+#### ifIn helper
+The helper's intent is to allow to check whether the value is present in an array. First parameter should be the value (or variable), followed by an array. For example, if we want to see whether string `twitter` is present in `user.connections` array, we would write the following:
+```js
+{{#ifIn 'twitter' user.connections}} do something here {{/ifIn}}
+```
+
+There is an opposite operator `ifNotIn` for your convenience.
+
+
+### Regular Expressions
+`ifRegex` allows to test any string against some regex expression.
+
+```js
+{{#ifRegex '^\S+@\S+\.\S+$' user.email}} do something here {{/ifRegex}}
+```
+
+
+### Translations
+All text content should be marked for translation in handlebars templates. Simply pass string into `t` helper and the string will be replaced with translation when necessary:
+```js
+{{t "This comment has no content."}}
+```
+
+In some cases you may want to use placeholders in text:
+```js
+{{t "%(numPosts)s comments" numPosts = count}}
+```
+Where `numPosts` is a named placeholder and `count` is some variable/property from current context.
+
+
+You can even insert html from other partial into placeholder:
+```js
+<h2>{{t "Also on %(forumName)s" forumName = formatForumName(thread.forum) }}</h2>
+...
+{{#partial 'formatForumName'}}
+    <strong>{{name}}</strong>
+{{/partial}}
+```
+Where `forumName` is a named placeholder, `formatForumName` is the partial name and `thread.forum` is the data context for `formatForumName` partial. Let's assume that our forum has name `My cat can't sleep well.` The resulting html (in English) will look like this:
+```html
+<h2>Also on <strong>My cat can't sleep well.</strong></h2>
+```
+
+You're not limited to use just single placeholder:
+```js
+{{t "%(user)s posted a %(comment)s in %(thread)s" user = activityUser(activity.object.author) comment = activityComment(activity.object) thread = activityThread(activity.object)}}
+```
+
+Please note that equality sign `=` is separated by spaces. This is the requirement (and limitation) at the moment.
+
+
+### Scoping and rendering context
+Usually templates are rendered based on some JSON data (context). In Disqus we provide two contexts for each template - local and global ones. While local context contains data specific to your current template (or partial), global context consists in variables which are common accross all templates. For example, global context may contain indicator whther user is authenticated or not, available width on a page and so on.
+Variables from local context should be resolved in usual way (see Handlebars documentation). Varialbes from global context could be accessed via helper `g`:
+```html
+<img data-src="{{g 'urls.media'}}/images/noavatar92.png"/>
+```
+
+
+### Partials
+In Handlebars partials should be in separate files/templates by default. This is not convenient when you have several groups of small partials. Therefore we introduced new helper named `partial` which allows you to define several partials in the same file:
+```html
+{{#partial 'learnMore'}}
+  <a href="http://help.disqus.com/customer/portal/articles/123456" target="_blank">{{t "Learn more"}}</a>
+{{/partial}}
+
+{{#partial 'feedback'}}
+  <a href="https://www.surveymonkey.com/s/ABCD" target="_blank">{{t "give us feedback"}}</a>
+{{/partial}}
+```
+
+### Iterating thorugh loops
+Default `each` helper remains almost untouched. In addition to standard `@index` variable, new variable named `@length` is accessible in any `each` loop. `@length` equal to the length of an array you iterating through.
+
+
+### Debugging and logging
+There are two helpers named `debug` and `log`, for developers convenience. `log` will simply output any variable/property into console. `debug` is the way to put breakpoint while you render the template.
+
+
+### html helper. Output html without characters escpaing (similar to Handlebar's `{{>` operator, but more intuitive)
+```js
+{{html post.message}}
+```
+
+
 
 
 Differences Between Handlebars.js and Mustache
