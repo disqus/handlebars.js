@@ -165,20 +165,20 @@ In Handlebars partials should be in separate files/templates by default. This is
 {{/partial}}
 ```
 
+
 ### Iterating thorugh loops
 Default `each` helper remains almost untouched. In addition to standard `@index` variable, new variable named `@length` is accessible in any `each` loop. `@length` equal to the length of an array you iterating through.
 
 
-### Debugging and logging
-There are two helpers named `debug` and `log`, for developers convenience. `log` will simply output any variable/property into console. `debug` is the way to put breakpoint while you render the template.
-
-
-### html helper. Output html without characters escpaing (similar to Handlebar's `{{>` operator, but more intuitive)
+### html helper
+Output html without characters escpaing (similar to Handlebar's `{{>` operator, but more intuitive)
 ```js
 {{html post.message}}
 ```
 
 
+### Debugging and logging
+There are two helpers named `debug` and `log`, for developers convenience. `log` will simply output any variable/property into console. `debug` is the way to put breakpoint while you render the template.
 
 
 Differences Between Handlebars.js and Mustache
