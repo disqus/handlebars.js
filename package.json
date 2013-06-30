@@ -1,5 +1,5 @@
 {
-  "name": "disqus-handlebars",
+  "name": "handlebars",
   "description": "Extension of Handlebars logicless template engine.",
   "version": "1.0.9",
   "homepage": "http://www.handlebarsjs.com/",
